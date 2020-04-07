@@ -1,12 +1,13 @@
 import React, { PureComponent, Fragment } from "react";
 import { observer, inject } from "mobx-react";
-import ApiServiceStore, { RootObject } from "../../services/ApiServiceStore";
+import ApiServiceStore from "../../services/ApiServiceStore";
 import "antd/dist/antd.css";
 import "./Home.scss";
 import { Layout, Row, Col } from "antd";
 import DrawerComponent from "../Drawer/Drawer";
 import { UtilityStore } from "../../services/UtilityStore";
 import ErrorBoundary from "../ErrorBoundry/ErrorBoundryComponent";
+import { Rocket } from "../../interfaces/IRockets";
 const { Header, Footer } = Layout;
 
 interface IHomeState {}
@@ -53,17 +54,17 @@ export default class Home extends PureComponent<IHomeProps, IHomeState> {
             </div>
           </div>
           <Footer style={{ textAlign: "center" }}>
-            Made in <span>❤️</span> 3.1432
+            Made in <span role="img" aria-label="heart">❤️</span> 3.1432
           </Footer>
         </Layout>
         <ErrorBoundary>
-          <DrawerComponent />
+          <DrawerComponent rocket={this.props.utilityStore?.getSelectedRocket || {} as any}/>
         </ErrorBoundary>
       </Fragment>
     );
   }
 
-  renderCol(rocket: RootObject, index: any) {
+  renderCol(rocket: Rocket.RootObject, index: any) {
     return (
       <Col
         className="gutter-row"
@@ -76,11 +77,12 @@ export default class Home extends PureComponent<IHomeProps, IHomeState> {
       >
         <article
           className={"card"}
-          onClick={() =>
-            this.props.utilityStore?.setDrawerVisibilityState(true)
-          }
+          onClick={() => {
+            this.props.utilityStore?.setSelectedRocket(rocket);
+            this.props.utilityStore?.setDrawerVisibilityState(true);
+          }}
         >
-          <img src={rocket.flickr_images[0]} alt="Rocket Image" />
+          <img src={rocket.flickr_images[0]} alt={rocket.rocket_name} />
           <h3>
             {rocket.rocket_name}
             <em>{rocket.company}</em>

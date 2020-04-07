@@ -1,10 +1,12 @@
 import React, { PureComponent } from "react";
-import { Layout, Row, Col, Drawer, Divider } from "antd";
+import { Row, Col, Drawer } from "antd";
 import { observer, inject } from "mobx-react";
 import { UtilityStore } from "../../services/UtilityStore";
+import { Rocket } from "../../interfaces/IRockets";
 
 interface IDrawer {
   utilityStore?: UtilityStore;
+  rocket: Rocket.RootObject;
 }
 
 const pStyle = {
@@ -46,14 +48,12 @@ const DescriptionItem = (desc: IDesc) => {
 @inject("utilityStore")
 @observer
 export default class DrawerComponent extends PureComponent<IDrawer> {
-  constructor(props: IDrawer) {
-    super(props);
-  }
+
 
   render() {
     return (
       <Drawer
-        title="Rocket Name"
+        title={this.props.rocket.rocket_name}
         width={500}
         placement="right"
         closable={true}
@@ -62,7 +62,6 @@ export default class DrawerComponent extends PureComponent<IDrawer> {
       >
         <div>
           <p className="site-description-item-profile-p" style={pStyle}>
-            {" "}
             Basic Details
           </p>
           <Row>
@@ -82,6 +81,11 @@ export default class DrawerComponent extends PureComponent<IDrawer> {
                 title="Description"
                 content="C / C + +, data structures, software engineering, operating systems, computer networks, databases, compiler theory, computer architecture, Microcomputer Principle and Interface Technology, Computer English, Java, ASP, etc."
               />
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+            
             </Col>
           </Row>
         </div>
