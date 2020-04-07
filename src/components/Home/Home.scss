@@ -1,0 +1,65 @@
+.logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 24px 16px 0;
+  float: left;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+.card {
+  cursor: pointer;
+  padding: 20px;
+  border: 1px solid #c9c9c9;
+  border-radius: 7px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+
+  & > img:first-child {
+    border-radius: 7px 7px 0 0;
+    margin-bottom: 20px;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.card h3 {
+  color: rebeccapurple;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+}
+
+.card h3 em {
+  padding: 0.25em;
+  background-color: #eddbff;
+  border-radius: 4px;
+}
+
+.card p {
+  color: #757575;
+  line-height: 1.5;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.button {
+  text-decoration: none;
+  background-color: rebeccapurple;
+  color: #fff;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+
+.site-description-item-profile-wrapper {
+    color: rgba(0, 0, 0, 0.65);
+  }
+  .site-description-item-profile-p {
+    color: rgba(0, 0, 0, 0.85);
+  }
